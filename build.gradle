@@ -4,13 +4,13 @@ buildscript {
         google()
     }
     dependencies {
-        classpath GRADLE_CLASS_PATH
+        classpath 'com.android.tools.build:gradle:3.6.4'
         classpath PROTOBUF_CLASS_PATH
     }
 }
 
-final String ANDROID_TOP = "${rootDir}/../../.."
-final String FRAMEWORK_PREBUILTS_DIR = "${ANDROID_TOP}/prebuilts/framework_intermediates/"
+final String FRAMEWORK_PREBUILTS_DIR = "${rootDir}/prebuilts/"
+final String protocVersion = "3.21.12.0"
 
 apply plugin: 'com.android.application'
 apply plugin: 'com.google.protobuf'
@@ -170,7 +170,7 @@ dependencies {
 protobuf {
     // Configure the protoc executable
     protoc {
-        artifact = "com.google.protobuf:protoc:${protocVersion}${PROTO_ARCH_SUFFIX}"
+        artifact = "com.google.protobuf:protoc:${protocVersion}"
     }
     generateProtoTasks {
         all().each { task ->
